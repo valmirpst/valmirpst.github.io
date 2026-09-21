@@ -1,168 +1,50 @@
-import TextReveal from "@/components/TextReveal";
 import { Button } from "@/components/ui/button";
-import { fadeUp, scaleIn, staggerContainer } from "@/lib/animations";
-import { motion, useReducedMotion } from "framer-motion";
+import { fadeUp, stagger } from "@/lib/animations";
+import { motion } from "framer-motion";
 import { ChevronDown, Github, Linkedin } from "lucide-react";
-import { HashLink } from "react-router-hash-link";
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/valmirpaivastachin/";
 const GITHUB_URL = "https://github.com/valmirpst";
 
-const HeroSection = () => {
-  const shouldReduceMotion = useReducedMotion();
+const HeroSection = () => (
+  <section id="hero" className="min-h-screen flex items-center relative overflow-hidden bg-background">
+    <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 opacity-[0.035] section-grid" />
+      <div className="absolute -right-28 top-1/4 h-[480px] w-[480px] rounded-full gradient-orb opacity-70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/30 to-background" />
+    </div>
 
-  return (
-    <section
-      id="hero"
-      className="min-h-screen flex items-center relative overflow-hidden bg-background"
-    >
-      {/* Background Grid Pattern - Pulsating and Animated */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.03] grid-animate"
-          style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
-            backgroundSize: "40px 40px",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
-      </div>
-
-      {/* Animated gradient orbs - Performance critical */}
-      {!shouldReduceMotion && (
-        <>
-          <motion.div
-            className="absolute top-1/4 -right-20 w-[600px] h-[600px] rounded-full pointer-events-none gradient-orb opacity-60"
-            style={{ willChange: "transform" }}
-            animate={{
-              scale: [1, 1.1, 1],
-              x: [0, 30, 0],
-              y: [0, -30, 0],
-            }}
-            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          />
-
-          <motion.div
-            className="absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full pointer-events-none gradient-orb-secondary opacity-40"
-            style={{ willChange: "transform" }}
-            animate={{
-              scale: [1, 1.2, 1],
-              rotate: [0, 90, 0],
-            }}
-            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </>
-      )}
-
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          className="max-w-4xl"
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-        >
-          {/* Availability Badge */}
-          <motion.div
-            variants={fadeUp}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-medium mb-6 backdrop-blur-sm"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-            </span>
-            Disponível para novos projetos
-          </motion.div>
-
-          <motion.p
-            variants={fadeUp}
-            className="font-mono text-sm text-primary/80 mb-4 tracking-wider uppercase"
-          >
-            Olá, eu sou
-          </motion.p>
-
-          <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold tracking-tighter mb-4 leading-[1.1]">
-            <TextReveal
-              text="Valmir Paiva Stachin"
-              highlightText="Stachin"
-              delay={0.2}
-            />
-          </h1>
-
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium mb-8 flex items-center gap-3">
-            <span className="text-muted-foreground/60 font-light">—</span>
-            <TextReveal
-              text="Full Stack Developer"
-              className="text-muted-foreground"
-              delay={0.6}
-            />
-          </h2>
-
-          <motion.p
-            variants={fadeUp}
-            className="text-lg text-muted-foreground max-w-2xl mb-10 leading-relaxed font-light"
-          >
-            Transformando ideias complexas em interfaces elegantes e escaláveis.
-            Especializado em{" "}
-            <span className="text-foreground font-normal">
-              React, Next.js, TypeScript, .NET
-            </span>
-            , criando soluções de alto impacto que conectam tecnologia e
-            pessoas.
-          </motion.p>
-
-          <motion.div
-            variants={scaleIn}
-            className="flex flex-wrap gap-5"
-            style={{ willChange: "transform, opacity" }}
-          >
-            <Button
-              asChild
-              size="lg"
-              className="glow h-12 px-8 rounded-full text-base font-semibold group transition-all hover:scale-105"
-            >
-              <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
-                <Linkedin className="mr-2 h-5 w-5 transition-transform group-hover:rotate-6 duration-300" />
-                Conectar no LinkedIn
-              </a>
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              asChild
-              className="h-12 px-8 rounded-full text-base border-white/10 hover:bg-gray-800 hover:text-white transition-all hover:scale-105 group"
-            >
-              <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
-                <Github className="mr-2 h-5 w-5 transition-transform group-hover:rotate-12 duration-300" />
-                Ver Github
-              </a>
-            </Button>
-          </motion.div>
+    <motion.div className="container mx-auto px-4 relative z-10" variants={stagger} initial="hidden" animate="visible">
+      <div className="max-w-4xl">
+        <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-medium mb-6">
+          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+          Disponível para novos projetos
+        </motion.div>
+        <motion.p variants={fadeUp} className="font-mono text-sm text-primary/80 mb-4 tracking-wider uppercase">Olá, eu sou</motion.p>
+        <motion.h1 variants={fadeUp} className="text-5xl sm:text-6xl md:text-8xl font-bold tracking-tighter mb-4 leading-[1.1]">
+          Valmir Paiva <span className="text-gradient">Stachin</span>
+        </motion.h1>
+        <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl md:text-4xl font-medium mb-8 text-muted-foreground">
+          Full Stack Developer
+        </motion.h2>
+        <motion.p variants={fadeUp} className="text-lg text-muted-foreground max-w-2xl mb-10 leading-relaxed font-light">
+          Transformo necessidades complexas em produtos digitais claros, estáveis e agradáveis de usar. Trabalho com React, Next.js, TypeScript e .NET.
+        </motion.p>
+        <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
+          <Button asChild size="lg" className="h-12 px-7 rounded-full text-base font-semibold shadow-[0_0_35px_-12px_rgba(245,158,11,0.45)]">
+            <a href={LINKEDIN_URL} target="_blank" rel="noreferrer"><Linkedin className="mr-2 h-5 w-5" />Conectar no LinkedIn</a>
+          </Button>
+          <Button variant="outline" size="lg" asChild className="h-12 px-7 rounded-full text-base border-white/10 hover:bg-white/10 hover:text-white">
+            <a href={GITHUB_URL} target="_blank" rel="noreferrer"><Github className="mr-2 h-5 w-5" />Ver GitHub</a>
+          </Button>
         </motion.div>
       </div>
+    </motion.div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 group pointer-events-auto"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-      >
-        <HashLink
-          smooth
-          to="#sobre"
-          aria-label="Ir para a seção sobre"
-          className="flex flex-col items-center gap-2 group"
-        >
-          <motion.div
-            animate={shouldReduceMotion ? { opacity: 1 } : { y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <ChevronDown className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-          </motion.div>
-        </HashLink>
-      </motion.div>
-    </section>
-  );
-};
+    <a href="#sobre" aria-label="Ir para a seção sobre" className="absolute bottom-9 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-primary transition-colors">
+      <ChevronDown className="h-5 w-5" />
+    </a>
+  </section>
+);
 
 export default HeroSection;
