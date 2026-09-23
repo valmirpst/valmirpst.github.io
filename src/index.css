@@ -70,10 +70,112 @@
     @apply bg-card border border-border rounded-xl;
   }
   .project-card {
-    @apply bg-card border border-border rounded-xl transition-colors duration-200;
+    @apply bg-card border border-border rounded-xl transition-colors duration-150;
   }
   .project-card:hover {
     @apply border-primary/40;
+  }
+}
+
+.education-timeline-item {
+  display: grid;
+  grid-template-columns: 1.5rem minmax(0, 1fr);
+  column-gap: 1rem;
+  padding-bottom: 2.75rem;
+}
+.education-timeline-item:last-child {
+  padding-bottom: 0;
+}
+.education-timeline-content {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  padding-bottom: 0.25rem;
+}
+.education-timeline-date {
+  color: hsl(var(--muted-foreground));
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  transition: color 250ms ease;
+}
+.education-timeline-item.is-active .education-timeline-date {
+  color: hsl(var(--primary));
+}
+.education-timeline-marker {
+  grid-column: 1;
+  grid-row: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-top: 0.45rem;
+}
+.education-timeline-path {
+  position: absolute;
+  top: 1.05rem;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 2.5rem);
+  overflow: visible;
+}
+.education-timeline-path-desktop {
+  display: none;
+}
+.education-timeline-track,
+.education-timeline-fill {
+  fill: none;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+  stroke-linecap: round;
+}
+.education-timeline-track {
+  stroke: hsl(var(--border));
+}
+.education-timeline-fill {
+  stroke: hsl(var(--primary));
+}
+.education-timeline-dot {
+  position: relative;
+  z-index: 2;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  border: 2px solid hsl(var(--muted-foreground));
+  background: hsl(var(--background));
+  box-shadow: 0 0 0 4px hsl(var(--background));
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease,
+    transform 250ms ease;
+}
+.education-timeline-dot-highlight {
+  border-color: hsl(var(--primary));
+}
+.education-timeline-item.is-active .education-timeline-dot {
+  background: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+  transform: scale(1.2);
+}
+@media (min-width: 768px) {
+  .education-timeline-item {
+    grid-template-columns: minmax(0, 1fr) 3rem minmax(0, 1fr);
+    column-gap: 2rem;
+  }
+  .education-timeline-marker {
+    grid-column: 2;
+  }
+  .education-timeline-item-left .education-timeline-content {
+    grid-column: 1;
+    text-align: right;
+  }
+  .education-timeline-item-right .education-timeline-content {
+    grid-column: 3;
+  }
+  .education-timeline-path-mobile {
+    display: none;
+  }
+  .education-timeline-path-desktop {
+    display: block;
   }
 }
 
@@ -164,7 +266,7 @@
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
+    animation-duration: 100ms !important;
+    transition-duration: 100ms !important;
   }
 }
