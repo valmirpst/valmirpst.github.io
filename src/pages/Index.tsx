@@ -4,6 +4,7 @@ import EducationSection from "@/components/EducationSection";
 import HeroSection from "@/components/HeroSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import SiteHeader from "@/components/SiteHeader";
+import StackSection from "@/components/StackSection";
 
 const Index = () => (
   <>
@@ -11,6 +12,7 @@ const Index = () => (
     <main id="conteudo">
       <HeroSection />
       <AboutSection />
+      <StackSection />
       <ProjectsSection />
       <EducationSection />
       <ContactSection />

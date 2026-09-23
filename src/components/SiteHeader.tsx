@@ -2,6 +2,7 @@ import { HashLink } from "react-router-hash-link";
 
 const links = [
   { href: "#sobre", label: "Sobre" },
+  { href: "#stack", label: "Stack" },
   { href: "#projetos", label: "Projetos" },
   { href: "#formacao", label: "Formação" },
   { href: "#contato", label: "Contato" },
