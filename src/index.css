@@ -41,7 +41,7 @@
   }
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 6rem;
+    scroll-padding-top: 5rem;
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
@@ -78,11 +78,12 @@
 }
 
 .site-header {
-  position: absolute;
+  position: fixed;
   z-index: 20;
   top: 0;
   left: 0;
   right: 0;
+  background: hsl(var(--background));
   border-bottom: 1px solid hsl(var(--border) / 0.65);
 }
 .site-header-inner {
@@ -135,6 +136,9 @@
   top: 1rem;
 }
 @media (max-width: 640px) {
+  html {
+    scroll-padding-top: 7rem;
+  }
   .site-header-inner {
     min-height: 68px;
     flex-wrap: wrap;
@@ -157,9 +161,6 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
   *,
   *::before,
   *::after {

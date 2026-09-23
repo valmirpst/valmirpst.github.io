@@ -2,9 +2,12 @@ import { fadeUp, stagger } from "@/lib/animations";
 import { motion } from "framer-motion";
 
 const groups = [
-  { title: "Interfaces", technologies: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS"] },
-  { title: "Backend e dados", technologies: ["Node.js", ".NET 8", "Python", "SQL", "PostgreSQL"] },
-  { title: "Ferramentas", technologies: ["Git", "Figma"] },
+  { title: "Frontend", technologies: ["React", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS"] },
+  {
+    title: "Backend e APIs",
+    technologies: ["C#", ".NET", "ASP.NET Core", "Node.js", "PHP", "REST APIs", "Entity Framework Core"],
+  },
+  { title: "Dados e entrega", technologies: ["SQL", "Git", "Docker", "Azure DevOps", "CI/CD"] },
 ];
 
 const StackSection = () => (
@@ -24,7 +27,7 @@ const StackSection = () => (
         </motion.h2>
         <motion.div variants={fadeUp} className="section-rule" />
         <motion.p variants={fadeUp} className="text-muted-foreground text-base sm:text-lg max-w-2xl mb-10">
-          Tecnologias presentes no meu trabalho e nos projetos deste portfólio.
+          Tecnologias e práticas que uso no desenvolvimento de aplicações web.
         </motion.p>
         <div className="border-t border-border">
           {groups.map((group) => (

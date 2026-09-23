@@ -96,7 +96,7 @@ const ProjectsSection = () => (
                       size="sm"
                       variant="outline"
                       asChild
-                      className="rounded-lg px-4 border-border hover:bg-secondary"
+                      className="rounded-lg px-4 border-border hover:bg-secondary hover:text-foreground"
                     >
                       <a href={project.repoUrl} target="_blank" rel="noreferrer">
                         <Github className="mr-1.5 h-3.5 w-3.5" />

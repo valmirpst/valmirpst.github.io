@@ -35,13 +35,23 @@ const ContactSection = () => (
               LinkedIn
             </a>
           </Button>
-          <Button variant="outline" asChild size="lg" className="rounded-lg px-6 h-12 border-border hover:bg-secondary">
+          <Button
+            variant="outline"
+            asChild
+            size="lg"
+            className="rounded-lg px-6 h-12 border-border hover:bg-secondary hover:text-foreground"
+          >
             <a href={GITHUB_URL} target="_blank" rel="noreferrer">
               <Github className="mr-2 h-5 w-5" />
               GitHub
             </a>
           </Button>
-          <Button variant="outline" asChild size="lg" className="rounded-lg px-6 h-12 border-border hover:bg-secondary">
+          <Button
+            variant="outline"
+            asChild
+            size="lg"
+            className="rounded-lg px-6 h-12 border-border hover:bg-secondary hover:text-foreground"
+          >
             <a href={`mailto:${EMAIL}`}>
               <Mail className="mr-2 h-5 w-5" />
               Email
