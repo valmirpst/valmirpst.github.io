@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { fadeUp, stagger } from "@/lib/animations";
 import { motion } from "framer-motion";
-import { ChevronDown, Github, Linkedin } from "lucide-react";
-import { HashLink } from "react-router-hash-link";
+import { Github, Linkedin } from "lucide-react";
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/valmirpaivastachin/";
 const GITHUB_URL = "https://github.com/valmirpst";
@@ -51,14 +50,6 @@ const HeroSection = () => (
         </motion.div>
       </div>
     </motion.div>
-
-    <HashLink
-      to="/#sobre"
-      aria-label="Ir para a seção sobre"
-      className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-primary transition-colors"
-    >
-      <ChevronDown className="h-5 w-5" />
-    </HashLink>
   </section>
 );
 

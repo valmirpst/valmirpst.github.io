@@ -51,7 +51,7 @@ const ContactSection = () => (
       </div>
       <footer className="max-w-6xl mx-auto mt-24 pt-8 border-t border-border flex flex-col sm:flex-row justify-between gap-3 text-sm text-muted-foreground">
         <span>© {new Date().getFullYear()} Valmir Paiva Stachin</span>
-        <span>Desenvolvido com foco em produto</span>
+        <span>Desenvolvido com excelência.</span>
       </footer>
     </div>
   </motion.section>
