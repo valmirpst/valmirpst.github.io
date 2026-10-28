@@ -2,12 +2,17 @@ import { fadeUp, stagger } from "@/lib/animations";
 import { motion } from "framer-motion";
 
 const groups = [
-  { title: "Frontend", technologies: ["React", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS"] },
+  {
+    title: "Frontend",
+    technologies: ["React", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS", "Material UI"],
+  },
   {
     title: "Backend e APIs",
-    technologies: ["C#", ".NET", "ASP.NET Core", "Node.js", "PHP", "REST APIs", "Entity Framework Core"],
+    technologies: ["C#", ".NET", "ASP.NET Core", "Entity Framework Core", "Node.js", "Express", "PHP"],
   },
-  { title: "Dados e entrega", technologies: ["SQL", "Git", "Docker", "Azure DevOps", "CI/CD"] },
+  { title: "Bancos de dados", technologies: ["SQL", "PostgreSQL", "MySQL"] },
+  { title: "Testes", technologies: ["Vitest", "Testing Library", "Testes unitários", "Testes de componentes"] },
+  { title: "Ferramentas e DevOps", technologies: ["Git", "GitHub", "Docker", "Azure DevOps", "CI/CD"] },
 ];
 
 const StackSection = () => (
@@ -37,7 +42,7 @@ const StackSection = () => (
               className="grid md:grid-cols-[minmax(12rem,1fr)_minmax(0,3fr)] gap-4 md:gap-8 py-6 sm:py-8 border-b border-border"
             >
               <h3 className="text-base sm:text-lg font-semibold text-foreground">{group.title}</h3>
-              <ul className="flex flex-wrap gap-2" aria-label={`Tecnologias de ${group.title.toLowerCase()}`}>
+              <ul className="flex flex-wrap gap-2" aria-label={`Competências: ${group.title}`}>
                 {group.technologies.map((technology) => (
                   <li
                     key={technology}
