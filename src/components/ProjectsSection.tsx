@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { fadeUp, stagger } from "@/lib/animations";
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
+import { useState } from "react";
 
 interface Project {
   title: string;
@@ -44,6 +45,24 @@ const projects: Project[] = [
   },
 ];
 
+const ProjectPreview = ({ project }: { project: Project }) => {
+  const [failed, setFailed] = useState(false);
+  if (!project.liveUrl || failed) return null;
+
+  return (
+    <div className="h-32 sm:h-36 overflow-hidden border-b border-border bg-secondary/40">
+      <img
+        src={`https://image.thum.io/get/width/600/crop/675/noanimate/${project.liveUrl}`}
+        alt={`Prévia do projeto ${project.title}`}
+        loading="lazy"
+        referrerPolicy="no-referrer"
+        onError={() => setFailed(true)}
+        className="h-full w-full object-cover object-top"
+      />
+    </div>
+  );
+};
+
 const ProjectsSection = () => (
   <motion.section
     id="projetos"
@@ -63,14 +82,15 @@ const ProjectsSection = () => (
       <div className="grid sm:grid-cols-2 gap-5 max-w-6xl mx-auto">
         {projects.map((project) => (
           <motion.article key={project.title} variants={fadeUp}>
-            <Card className="project-card h-full flex flex-col">
+            <Card className="project-card h-full flex flex-col overflow-hidden">
+              {project.liveUrl && <ProjectPreview project={project} />}
               <CardHeader>
                 <CardTitle className="text-xl leading-snug text-foreground">{project.title}</CardTitle>
                 <CardDescription className="text-muted-foreground leading-relaxed text-sm sm:text-base mt-3">
                   {project.description}
                 </CardDescription>
               </CardHeader>
-              <CardContent className="h-full flex flex-col justify-between gap-7">
+              <CardContent className={`flex flex-col ${project.liveUrl ? "gap-4" : "gap-6"}`}>
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech) => (
                     <Badge

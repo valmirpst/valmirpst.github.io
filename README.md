@@ -58,6 +58,8 @@ O servidor de desenvolvimento fica disponível em `http://localhost:8080/`.
 
 Os textos e links principais ficam nos componentes de cada seção. As listas de projetos, tecnologias e formações estão em `ProjectsSection.tsx`, `StackSection.tsx` e `EducationSection.tsx`, respectivamente.
 
+Os projetos com `liveUrl` exibem uma captura automática da página pública pelo serviço [Thum.io](https://www.thum.io/). Não é necessário enviar imagens; a disponibilidade e atualização das prévias dependem desse serviço. Se a captura falhar, o cartão é exibido sem prévia.
+
 ## Publicação
 
 Um push na branch `main` aciona o workflow do GitHub Actions, que instala as dependências com `npm ci`, gera o build e publica `dist/` no GitHub Pages.
